@@ -1,11 +1,10 @@
 <?php
-	
 /**
- * Class to define an object to administrate php process, the  most important utility is kill and keep tracked the
+ * Class to define an object to administrate php process, the  most important utility is kill and keep tracked
  * the php process to save memory and evade cpu issues
  * @author Diego Cardona <cardona.root@gmail.com>
  */
-class pids_manager{
+class PidsManager{
 	
 	private $pids = array();
 
@@ -93,6 +92,13 @@ class pids_manager{
 		}
 	}
 
+/**
+ * function kill_all
+ *
+ * Pids killer, kill all process saved in the collection
+ * 
+ * @access public
+ */
 	public function kill_all(){
 
 		foreach ($this->pids as $key => $value) {
@@ -101,6 +107,14 @@ class pids_manager{
 		return TRUE;
 	}
 
+/**
+ * function kill_pid
+ *
+ * Pids killer, kill a single process, based in their pid
+ * 
+ * @access private
+ * @param pid, the process id
+ */
 	private function kill_pid( $pid ){
 		
 		if( !is_null( $pid ) && $pid != '' && !is_nan( $pid ) ){
@@ -117,6 +131,14 @@ class pids_manager{
 		}
 	}
 
+/**
+ * function kill_pid
+ *
+ * add a single pid to the collection
+ * 
+ * @access private
+ * @param pid, the process id
+ */
 	private function add_pid( $pid ){
 
 		if( !is_nan( $pid ) ){
